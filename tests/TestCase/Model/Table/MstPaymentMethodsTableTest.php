@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AccountTable;
+use App\Model\Table\MstPaymentMethodsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\AccountTable Test Case
+ * App\Model\Table\MstPaymentMethodsTable Test Case
  */
-class AccountTableTest extends TestCase
+class MstPaymentMethodsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\AccountTable
+     * @var \App\Model\Table\MstPaymentMethodsTable
      */
-    protected $Account;
+    protected $MstPaymentMethods;
 
     /**
      * Fixtures
@@ -25,9 +25,7 @@ class AccountTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.Account',
-        'app.User',
-        'app.AccountLog',
+        'app.MstPaymentMethods',
     ];
 
     /**
@@ -38,8 +36,8 @@ class AccountTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Account') ? [] : ['className' => AccountTable::class];
-        $this->Account = TableRegistry::getTableLocator()->get('Account', $config);
+        $config = TableRegistry::getTableLocator()->exists('MstPaymentMethods') ? [] : ['className' => MstPaymentMethodsTable::class];
+        $this->MstPaymentMethods = TableRegistry::getTableLocator()->get('MstPaymentMethods', $config);
     }
 
     /**
@@ -49,7 +47,7 @@ class AccountTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->Account);
+        unset($this->MstPaymentMethods);
 
         parent::tearDown();
     }
@@ -60,16 +58,6 @@ class AccountTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

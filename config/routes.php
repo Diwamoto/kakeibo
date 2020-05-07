@@ -69,7 +69,6 @@ $routes->scope('/', function (RouteBuilder $builder) {
      */
     $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $builder->connect('/users/:action/*', ['controller' => 'Users']);
-    $builder->connect('/api/:action/*', ['controller' => 'KakeiboApi']);
     /*
      * Connect catchall routes for all controllers.
      *
@@ -91,9 +90,9 @@ $routes->scope('/', function (RouteBuilder $builder) {
  * open new scope and define routes there.
  *
  * ```
- * $routes->scope('/api', function (RouteBuilder $builder) {
- *     // No $builder->applyMiddleware() here.
- *     // Connect API actions here.
- * });
+ * 
  * ```
  */
+$routes->scope('/', function (RouteBuilder $builder) {
+    $builder->connect('/api/:action/*', ['controller' => 'KakeiboApi']);
+});

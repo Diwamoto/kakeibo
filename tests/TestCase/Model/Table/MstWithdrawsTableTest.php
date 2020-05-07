@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UserTable;
+use App\Model\Table\MstWithdrawsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UserTable Test Case
+ * App\Model\Table\MstWithdrawsTable Test Case
  */
-class UserTableTest extends TestCase
+class MstWithdrawsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UserTable
+     * @var \App\Model\Table\MstWithdrawsTable
      */
-    protected $User;
+    protected $MstWithdraws;
 
     /**
      * Fixtures
@@ -25,8 +25,7 @@ class UserTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.User',
-        'app.Account',
+        'app.MstWithdraws',
     ];
 
     /**
@@ -37,8 +36,8 @@ class UserTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('User') ? [] : ['className' => UserTable::class];
-        $this->User = TableRegistry::getTableLocator()->get('User', $config);
+        $config = TableRegistry::getTableLocator()->exists('MstWithdraws') ? [] : ['className' => MstWithdrawsTable::class];
+        $this->MstWithdraws = TableRegistry::getTableLocator()->get('MstWithdraws', $config);
     }
 
     /**
@@ -48,7 +47,7 @@ class UserTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->User);
+        unset($this->MstWithdraws);
 
         parent::tearDown();
     }

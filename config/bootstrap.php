@@ -58,13 +58,13 @@ use Cake\Utility\Security;
  * security risks. See https://github.com/josegonzalez/php-dotenv#general-security-information
  * for more information for recommended practices.
 */
-// if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
-//     $dotenv = new \josegonzalez\Dotenv\Loader([CONFIG . '.env']);
-//     $dotenv->parse()
-//         ->putenv()
-//         ->toEnv()
-//         ->toServer();
-// }
+if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
+    $dotenv = new \josegonzalez\Dotenv\Loader([CONFIG . '.env']);
+    $dotenv->parse()
+        ->putenv()
+        ->toEnv()
+        ->toServer();
+}
 
 /*
  * Read configuration file and inject configuration into various
@@ -176,7 +176,21 @@ ServerRequest::addDetector('tablet', function ($request) {
 
     return $detector->isTablet();
 });
+Configure::write('line_settings', [
+    'displayErrorDetails' => true, // set to false in production
 
+    'logger' => [
+        'name' => 'kakeibo',
+        'path' => __DIR__ . '/../../../logs/app.log',
+    ],
+
+    'bot' => [
+        'channelToken' => env('LINEBOT_CHANNEL_TOKEN') ?: '<your channel token>',
+        'channelSecret' => env('LINEBOT_CHANNEL_SECRET') ?: '<your channel secret>',
+    ],
+
+    'apiEndpointBase' => env('LINEBOT_API_ENDPOINT_BASE'),
+]); 
 /*
  * You can set whether the ORM uses immutable or mutable Time types.
  * The default changed in 4.0 to immutable types. You can uncomment

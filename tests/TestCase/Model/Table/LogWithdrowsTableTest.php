@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AccountLogTable;
+use App\Model\Table\LogWithdrowsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\AccountLogTable Test Case
+ * App\Model\Table\LogWithdrowsTable Test Case
  */
-class AccountLogTableTest extends TestCase
+class LogWithdrowsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\AccountLogTable
+     * @var \App\Model\Table\LogWithdrowsTable
      */
-    protected $AccountLog;
+    protected $LogWithdrows;
 
     /**
      * Fixtures
@@ -25,8 +25,11 @@ class AccountLogTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.AccountLog',
+        'app.LogWithdrows',
+        'app.Users',
+        'app.MstWithdraws',
         'app.Accounts',
+        'app.MstPaymentMethods',
     ];
 
     /**
@@ -37,8 +40,8 @@ class AccountLogTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('AccountLog') ? [] : ['className' => AccountLogTable::class];
-        $this->AccountLog = TableRegistry::getTableLocator()->get('AccountLog', $config);
+        $config = TableRegistry::getTableLocator()->exists('LogWithdrows') ? [] : ['className' => LogWithdrowsTable::class];
+        $this->LogWithdrows = TableRegistry::getTableLocator()->get('LogWithdrows', $config);
     }
 
     /**
@@ -48,7 +51,7 @@ class AccountLogTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->AccountLog);
+        unset($this->LogWithdrows);
 
         parent::tearDown();
     }

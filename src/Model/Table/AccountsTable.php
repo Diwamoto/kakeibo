@@ -9,10 +9,11 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Account Model
+ * Accounts Model
  *
- * @property \App\Model\Table\UserTable&\Cake\ORM\Association\BelongsTo $User
- * @property \App\Model\Table\AccountLogTable&\Cake\ORM\Association\HasMany $AccountLog
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\LogDepositsTable&\Cake\ORM\Association\HasMany $LogDeposits
+ * @property \App\Model\Table\LogWithdrowsTable&\Cake\ORM\Association\HasMany $LogWithdrows
  *
  * @method \App\Model\Entity\Account newEmptyEntity()
  * @method \App\Model\Entity\Account newEntity(array $data, array $options = [])
@@ -30,7 +31,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class AccountTable extends Table
+class AccountsTable extends Table
 {
     /**
      * Initialize method
@@ -42,17 +43,20 @@ class AccountTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('account');
+        $this->setTable('accounts');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('User', [
+        $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
         ]);
-        $this->hasMany('AccountLog', [
+        $this->hasMany('LogDeposits', [
+            'foreignKey' => 'account_id',
+        ]);
+        $this->hasMany('LogWithdrows', [
             'foreignKey' => 'account_id',
         ]);
     }
@@ -71,13 +75,11 @@ class AccountTable extends Table
 
         $validator
             ->scalar('name')
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->allowEmptyString('name');
 
         $validator
             ->integer('amount')
-            ->requirePresence('amount', 'create')
-            ->notEmptyString('amount');
+            ->allowEmptyString('amount');
 
         return $validator;
     }
@@ -91,7 +93,7 @@ class AccountTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['user_id'], 'User'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

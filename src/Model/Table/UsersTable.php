@@ -9,9 +9,11 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * User Model
+ * Users Model
  *
- * @property \App\Model\Table\AccountTable&\Cake\ORM\Association\HasMany $Account
+ * @property \App\Model\Table\AccountsTable&\Cake\ORM\Association\HasMany $Accounts
+ * @property \App\Model\Table\LogDepositsTable&\Cake\ORM\Association\HasMany $LogDeposits
+ * @property \App\Model\Table\LogWithdrowsTable&\Cake\ORM\Association\HasMany $LogWithdrows
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -29,7 +31,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UserTable extends Table
+class UsersTable extends Table
 {
     /**
      * Initialize method
@@ -41,13 +43,18 @@ class UserTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('user');
-        $this->setDisplayField('name');
+        $this->setTable('users');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Account', [
+        $this->hasMany('Accounts', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('LogDeposits', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('LogWithdrows', [
             'foreignKey' => 'user_id',
         ]);
     }
@@ -65,19 +72,20 @@ class UserTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->scalar('name')
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
-
-        $validator
             ->scalar('password')
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
         $validator
-            ->scalar('api_key')
-            ->requirePresence('api_key', 'create')
-            ->notEmptyString('api_key');
+            ->scalar('token')
+            ->allowEmptyString('token');
+
+        $validator
+            ->integer('authority')
+            ->allowEmptyString('authority');
+
+        $validator
+            ->allowEmptyString('status');
 
         return $validator;
     }

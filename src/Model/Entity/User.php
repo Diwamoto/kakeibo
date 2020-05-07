@@ -11,11 +11,15 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $password
- * @property string $api_key
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property string|null $token
+ * @property int|null $authority
+ * @property int|null $status
+ * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime|null $modified
  *
- * @property \App\Model\Entity\Account[] $account
+ * @property \App\Model\Entity\Account[] $accounts
+ * @property \App\Model\Entity\LogDeposit[] $log_deposits
+ * @property \App\Model\Entity\LogWithdrow[] $log_withdrows
  */
 class User extends Entity
 {
@@ -29,12 +33,16 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
+        'line_user_id' => true,
         'password' => true,
-        'api_key' => true,
+        'token' => true,
+        'authority' => true,
+        'status' => true,
         'created' => true,
         'modified' => true,
-        'account' => true,
+        'accounts' => true,
+        'log_deposits' => true,
+        'log_withdrows' => true,
     ];
 
     /**
@@ -44,5 +52,6 @@ class User extends Entity
      */
     protected $_hidden = [
         'password',
+        'token',
     ];
 }
