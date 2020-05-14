@@ -13,7 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\LogDepositsTable&\Cake\ORM\Association\HasMany $LogDeposits
- * @property \App\Model\Table\LogWithdrowsTable&\Cake\ORM\Association\HasMany $LogWithdrows
+ * @property \App\Model\Table\LogWithdrawsTable&\Cake\ORM\Association\HasMany $LogWithdraws
  *
  * @method \App\Model\Entity\Account newEmptyEntity()
  * @method \App\Model\Entity\Account newEntity(array $data, array $options = [])
@@ -56,7 +56,7 @@ class AccountsTable extends Table
         $this->hasMany('LogDeposits', [
             'foreignKey' => 'account_id',
         ]);
-        $this->hasMany('LogWithdrows', [
+        $this->hasMany('LogWithdraws', [
             'foreignKey' => 'account_id',
         ]);
     }
@@ -74,12 +74,20 @@ class AccountsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
+            ->integer('account_type')
+            ->allowEmptyString('account_type');
+
+        $validator
             ->scalar('name')
             ->allowEmptyString('name');
 
         $validator
             ->integer('amount')
             ->allowEmptyString('amount');
+            
+        $validator
+            ->integer('payment_method_id')
+            ->allowEmptyString('payment_method_id');
 
         return $validator;
     }

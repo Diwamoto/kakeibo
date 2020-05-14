@@ -13,7 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\AccountsTable&\Cake\ORM\Association\HasMany $Accounts
  * @property \App\Model\Table\LogDepositsTable&\Cake\ORM\Association\HasMany $LogDeposits
- * @property \App\Model\Table\LogWithdrowsTable&\Cake\ORM\Association\HasMany $LogWithdrows
+ * @property \App\Model\Table\LogWithdrawsTable&\Cake\ORM\Association\HasMany $LogWithdraws
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -44,6 +44,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -54,7 +55,7 @@ class UsersTable extends Table
         $this->hasMany('LogDeposits', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('LogWithdrows', [
+        $this->hasMany('LogWithdraws', [
             'foreignKey' => 'user_id',
         ]);
     }

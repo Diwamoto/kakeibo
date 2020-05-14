@@ -53,9 +53,6 @@ class LogDepositsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
         ]);
-        $this->belongsTo('MstPaymentMethods', [
-            'foreignKey' => 'paymentmethod_id',
-        ]);
         $this->belongsTo('Accounts', [
             'foreignKey' => 'account_id',
         ]);
@@ -90,20 +87,4 @@ class LogDepositsTable extends Table
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['paymentmethod_id'], 'MstPaymentMethods'));
-        $rules->add($rules->existsIn(['account_id'], 'Accounts'));
-        $rules->add($rules->existsIn(['deposit_id'], 'MstDeposits'));
-
-        return $rules;
-    }
 }

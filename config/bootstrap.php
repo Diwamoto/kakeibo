@@ -191,6 +191,15 @@ Configure::write('line_settings', [
 
     'apiEndpointBase' => env('LINEBOT_API_ENDPOINT_BASE'),
 ]); 
+Configure::write('log_types', [
+    'withdraw' => 1,
+    'deposit' => 2,
+    'transfer' => 3
+]);
+Configure::write('card_types', [
+    'credit' => 1,
+    'debit' => 2
+]);
 /*
  * You can set whether the ORM uses immutable or mutable Time types.
  * The default changed in 4.0 to immutable types. You can uncomment

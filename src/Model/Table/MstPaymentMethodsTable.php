@@ -38,7 +38,7 @@ class MstPaymentMethodsTable extends Table
         parent::initialize($config);
 
         $this->setTable('mst_payment_methods');
-        $this->setDisplayField('key');
+        $this->setDisplayField('value');
         $this->setPrimaryKey('key');
     }
 

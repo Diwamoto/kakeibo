@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
- * @property string $name
+ * @property string $line_user_id
  * @property string $password
  * @property string|null $token
  * @property int|null $authority
@@ -19,7 +19,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Account[] $accounts
  * @property \App\Model\Entity\LogDeposit[] $log_deposits
- * @property \App\Model\Entity\LogWithdrow[] $log_withdrows
+ * @property \App\Model\Entity\LogWithdraw[] $log_withdraws
  */
 class User extends Entity
 {
@@ -42,7 +42,7 @@ class User extends Entity
         'modified' => true,
         'accounts' => true,
         'log_deposits' => true,
-        'log_withdrows' => true,
+        'log_withdraws' => true,
     ];
 
     /**

@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * Account Entity
  *
  * @property int $id
+ * @property int|null $account_type
  * @property string|null $name
  * @property int $user_id
  * @property int|null $amount
@@ -17,7 +18,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\LogDeposit[] $log_deposits
- * @property \App\Model\Entity\LogWithdrow[] $log_withdrows
+ * @property \App\Model\Entity\LogWithdraw[] $log_withdraws
  */
 class Account extends Entity
 {
@@ -31,6 +32,7 @@ class Account extends Entity
      * @var array
      */
     protected $_accessible = [
+        'account_type' => true,
         'name' => true,
         'user_id' => true,
         'amount' => true,
@@ -38,6 +40,6 @@ class Account extends Entity
         'modified' => true,
         'user' => true,
         'log_deposits' => true,
-        'log_withdrows' => true,
+        'log_withdraws' => true,
     ];
 }

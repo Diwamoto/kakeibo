@@ -69,6 +69,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
      */
     $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $builder->connect('/users/:action/*', ['controller' => 'Users']);
+    $builder->connect('/kakeibo/*', ['controller' => 'Kakeibo', 'action' => 'index']);
     /*
      * Connect catchall routes for all controllers.
      *

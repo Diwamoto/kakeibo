@@ -38,7 +38,7 @@ class MstDepositsTable extends Table
         parent::initialize($config);
 
         $this->setTable('mst_deposits');
-        $this->setDisplayField('key');
+        $this->setDisplayField('value');
         $this->setPrimaryKey('key');
     }
 

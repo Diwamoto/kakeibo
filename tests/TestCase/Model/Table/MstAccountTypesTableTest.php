@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AccountsTable;
+use App\Model\Table\MstAccountTypesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\AccountsTable Test Case
+ * App\Model\Table\MstAccountTypesTable Test Case
  */
-class AccountsTableTest extends TestCase
+class MstAccountTypesTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\AccountsTable
+     * @var \App\Model\Table\MstAccountTypesTable
      */
-    protected $Accounts;
+    protected $MstAccountTypes;
 
     /**
      * Fixtures
@@ -25,10 +25,7 @@ class AccountsTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.Accounts',
-        'app.Users',
-        'app.LogDeposits',
-        'app.LogWithdraws',
+        'app.MstAccountTypes',
     ];
 
     /**
@@ -39,8 +36,8 @@ class AccountsTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Accounts') ? [] : ['className' => AccountsTable::class];
-        $this->Accounts = TableRegistry::getTableLocator()->get('Accounts', $config);
+        $config = TableRegistry::getTableLocator()->exists('MstAccountTypes') ? [] : ['className' => MstAccountTypesTable::class];
+        $this->MstAccountTypes = TableRegistry::getTableLocator()->get('MstAccountTypes', $config);
     }
 
     /**
@@ -50,7 +47,7 @@ class AccountsTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->Accounts);
+        unset($this->MstAccountTypes);
 
         parent::tearDown();
     }

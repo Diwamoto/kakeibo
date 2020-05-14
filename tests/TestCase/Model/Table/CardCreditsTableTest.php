@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\LogWithdrawsTable;
+use App\Model\Table\CardCreditsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\LogWithdrawsTable Test Case
+ * App\Model\Table\CardCreditsTable Test Case
  */
-class LogWithdrawsTableTest extends TestCase
+class CardCreditsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\LogWithdrawsTable
+     * @var \App\Model\Table\CardCreditsTable
      */
-    protected $LogWithdraws;
+    protected $CardCredits;
 
     /**
      * Fixtures
@@ -25,11 +25,8 @@ class LogWithdrawsTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.LogWithdraws',
+        'app.CardCredits',
         'app.Users',
-        'app.MstWithdraws',
-        'app.Accounts',
-        'app.MstPaymentMethods',
     ];
 
     /**
@@ -40,8 +37,8 @@ class LogWithdrawsTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('LogWithdraws') ? [] : ['className' => LogWithdrawsTable::class];
-        $this->LogWithdraws = TableRegistry::getTableLocator()->get('LogWithdraws', $config);
+        $config = TableRegistry::getTableLocator()->exists('CardCredits') ? [] : ['className' => CardCreditsTable::class];
+        $this->CardCredits = TableRegistry::getTableLocator()->get('CardCredits', $config);
     }
 
     /**
@@ -51,7 +48,7 @@ class LogWithdrawsTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->LogWithdraws);
+        unset($this->CardCredits);
 
         parent::tearDown();
     }
