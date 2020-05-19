@@ -1,0 +1,381 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2020-05-15 14:39+0900\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /src/Controller/AccountLogsController.php:53
+#: /src/Controller/AccountLogsController.php:77
+msgid "The account log has been saved."
+msgstr ""
+
+#: /src/Controller/AccountLogsController.php:57
+#: /src/Controller/AccountLogsController.php:81
+msgid "The account log could not be saved. Please, try again."
+msgstr ""
+
+#: /src/Controller/AccountLogsController.php:98
+msgid "The account log has been deleted."
+msgstr ""
+
+#: /src/Controller/AccountLogsController.php:100
+msgid "The account log could not be deleted. Please, try again."
+msgstr ""
+
+#: /src/Controller/AccountsController.php:53
+#: /src/Controller/AccountsController.php:77
+msgid "The account has been saved."
+msgstr ""
+
+#: /src/Controller/AccountsController.php:57
+#: /src/Controller/AccountsController.php:81
+msgid "The account could not be saved. Please, try again."
+msgstr ""
+
+#: /src/Controller/AccountsController.php:98
+msgid "The account has been deleted."
+msgstr ""
+
+#: /src/Controller/AccountsController.php:100
+msgid "The account could not be deleted. Please, try again."
+msgstr ""
+
+#: /src/Controller/LogDepositsController.php:57
+#: /src/Controller/LogDepositsController.php:84
+msgid "The log deposit has been saved."
+msgstr ""
+
+#: /src/Controller/LogDepositsController.php:61
+#: /src/Controller/LogDepositsController.php:88
+msgid "The log deposit could not be saved. Please, try again."
+msgstr ""
+
+#: /src/Controller/LogDepositsController.php:108
+msgid "The log deposit has been deleted."
+msgstr ""
+
+#: /src/Controller/LogDepositsController.php:110
+msgid "The log deposit could not be deleted. Please, try again."
+msgstr ""
+
+#: /src/Controller/LogWithdrawsController.php:57
+#: /src/Controller/LogWithdrawsController.php:85
+msgid "The log withdraw has been saved."
+msgstr ""
+
+#: /src/Controller/LogWithdrawsController.php:61
+#: /src/Controller/LogWithdrawsController.php:89
+msgid "The log withdraw could not be saved. Please, try again."
+msgstr ""
+
+#: /src/Controller/LogWithdrawsController.php:110
+msgid "The log withdraw has been deleted."
+msgstr ""
+
+#: /src/Controller/LogWithdrawsController.php:112
+msgid "The log withdraw could not be deleted. Please, try again."
+msgstr ""
+
+#: /src/Controller/UsersController.php:53
+#: /src/Controller/UsersController.php:77
+msgid "The user has been saved."
+msgstr ""
+
+#: /src/Controller/UsersController.php:57
+#: /src/Controller/UsersController.php:81
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: /src/Controller/UsersController.php:98
+msgid "The user has been deleted."
+msgstr ""
+
+#: /src/Controller/UsersController.php:100
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: /templates/LogDeposits/add.php:10
+#: /templates/LogDeposits/edit.php:10
+#: /templates/LogDeposits/index.php:21
+#: /templates/LogDeposits/view.php:10
+#: /templates/LogWithdraws/add.php:10
+#: /templates/LogWithdraws/edit.php:10
+#: /templates/LogWithdraws/index.php:22
+#: /templates/LogWithdraws/view.php:10
+#: /templates/Users/add.php:10
+#: /templates/Users/edit.php:10
+#: /templates/Users/index.php:17
+#: /templates/Users/view.php:10
+msgid "Actions"
+msgstr "操作"
+
+#: /templates/LogDeposits/add.php:11
+#: /templates/LogDeposits/edit.php:16
+#: /templates/LogDeposits/view.php:13
+msgid "List Log Deposits"
+msgstr "入金リスト"
+
+#: /templates/LogDeposits/add.php:18
+msgid "Add Log Deposit"
+msgstr "入金記録を追加する"
+
+#: /templates/LogDeposits/add.php:28
+#: /templates/LogDeposits/edit.php:33
+#: /templates/LogWithdraws/add.php:30
+#: /templates/LogWithdraws/edit.php:35
+#: /templates/Users/add.php:25
+#: /templates/Users/edit.php:30
+msgid "Submit"
+msgstr "完了"
+
+#: /templates/LogDeposits/edit.php:12
+#: /templates/LogWithdraws/edit.php:12
+#: /templates/Users/edit.php:12
+#: /templates/Users/index.php:29
+msgid "Delete"
+msgstr "削除"
+
+#: /templates/LogDeposits/edit.php:14
+#: /templates/LogDeposits/index.php:37
+#: /templates/LogDeposits/view.php:12
+#: /templates/LogWithdraws/edit.php:14
+#: /templates/LogWithdraws/index.php:39
+#: /templates/LogWithdraws/view.php:12
+#: /templates/Users/edit.php:14
+#: /templates/Users/index.php:29
+#: /templates/Users/view.php:12
+msgid "Are you sure you want to delete # {0}?"
+msgstr "# {0} を削除しますか？"
+
+#: /templates/LogDeposits/edit.php:23
+#: /templates/LogDeposits/view.php:11
+msgid "Edit Log Deposit"
+msgstr "入金記録を編集する"
+
+#: /templates/LogDeposits/index.php:8
+msgid "新規作成"
+msgstr "新規作成"
+
+#: /templates/LogDeposits/index.php:9
+msgid "Log Deposits"
+msgstr "入金記録"
+
+#: /templates/LogDeposits/index.php:35
+#: /templates/LogWithdraws/index.php:37
+msgid "View"
+msgstr "詳細"
+
+#: /templates/LogDeposits/index.php:36
+#: /templates/LogWithdraws/index.php:38
+msgid "Edit"
+msgstr "編集"
+
+#: /templates/LogDeposits/index.php:37
+#: /templates/LogWithdraws/index.php:39
+msgid "Delete"
+msgstr "削除"
+
+#: /templates/LogDeposits/index.php:46
+#: /templates/LogWithdraws/index.php:48
+#: /templates/Users/index.php:38
+msgid "first"
+msgstr "銭湯"
+
+#: /templates/LogDeposits/index.php:47
+#: /templates/LogWithdraws/index.php:49
+#: /templates/Users/index.php:39
+msgid "previous"
+msgstr "前"
+
+#: /templates/LogDeposits/index.php:49
+#: /templates/LogWithdraws/index.php:51
+#: /templates/Users/index.php:41
+msgid "next"
+msgstr "次"
+
+#: /templates/LogDeposits/index.php:50
+#: /templates/LogWithdraws/index.php:52
+#: /templates/Users/index.php:42
+msgid "last"
+msgstr "最後"
+
+#: /templates/LogDeposits/index.php:52
+#: /templates/LogWithdraws/index.php:54
+#: /templates/Users/index.php:44
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "{{pages}}ページ中{{page}}ページ目、 合計{{count}}件中の{{current}}件表示中。"
+
+#: /templates/LogDeposits/view.php:12
+msgid "Delete Log Deposit"
+msgstr "入金記録を削除する"
+
+#: /templates/LogDeposits/view.php:14
+msgid "New Log Deposit"
+msgstr "入金記録を作成する"
+
+#: /templates/LogDeposits/view.php:22
+#: /templates/LogWithdraws/view.php:22
+msgid "User"
+msgstr "ユーザー"
+
+#: /templates/LogDeposits/view.php:26
+#: /templates/LogWithdraws/view.php:30
+msgid "Account"
+msgstr "口座"
+
+#: /templates/LogDeposits/view.php:30
+msgid "Mst Deposit"
+msgstr "入金マスタ"
+
+#: /templates/LogDeposits/view.php:34
+#: /templates/LogWithdraws/view.php:38
+#: /templates/Users/view.php:22
+msgid "Id"
+msgstr ""
+
+#: /templates/LogDeposits/view.php:38
+#: /templates/LogWithdraws/view.php:42
+msgid "Amount"
+msgstr "金額"
+
+#: /templates/LogDeposits/view.php:42
+#: /templates/LogWithdraws/view.php:46
+msgid "Fix Flg"
+msgstr "修正フラグ"
+
+#: /templates/LogDeposits/view.php:46
+#: /templates/LogWithdraws/view.php:50
+#: /templates/Users/view.php:26
+msgid "Created"
+msgstr "作成日時"
+
+#: /templates/LogDeposits/view.php:50
+#: /templates/LogWithdraws/view.php:54
+#: /templates/Users/view.php:30
+msgid "Modified"
+msgstr "更新日時"
+
+#: /templates/LogDeposits/view.php:55
+#: /templates/LogWithdraws/view.php:65
+msgid "Comment"
+msgstr "コメント"
+
+#: /templates/LogWithdraws/add.php:11
+#: /templates/LogWithdraws/edit.php:16
+#: /templates/LogWithdraws/view.php:13
+msgid "List Log Withdraws"
+msgstr "出金記録"
+
+#: /templates/LogWithdraws/add.php:18
+msgid "Add Log Withdraw"
+msgstr "出金記録を作成する"
+
+#: /templates/LogWithdraws/edit.php:23
+#: /templates/LogWithdraws/view.php:11
+msgid "Edit Log Withdraw"
+msgstr "出金記録を編集する。"
+
+#: /templates/LogWithdraws/index.php:8
+#: /templates/LogWithdraws/view.php:14
+msgid "New Log Withdraw"
+msgstr "新規出金記録を作成する"
+
+#: /templates/LogWithdraws/index.php:9
+msgid "Log Withdraws"
+msgstr "出金記録"
+
+#: /templates/LogWithdraws/view.php:12
+msgid "Delete Log Withdraw"
+msgstr "出金記録を削除する"
+
+#: /templates/LogWithdraws/view.php:26
+msgid "Mst Withdraw"
+msgstr "出金理由マスタ"
+
+#: /templates/LogWithdraws/view.php:34
+msgid "Mst Payment Method"
+msgstr "支払方法マスタ"
+
+#: /templates/LogWithdraws/view.php:59
+msgid "Place"
+msgstr "場所"
+
+#: /templates/Users/add.php:11
+#: /templates/Users/edit.php:16
+#: /templates/Users/view.php:13
+msgid "List Users"
+msgstr "ユーザーリスト"
+
+#: /templates/Users/add.php:18
+msgid "Add User"
+msgstr "ユーザーを追加"
+
+#: /templates/Users/edit.php:23
+#: /templates/Users/view.php:11
+msgid "Edit User"
+msgstr "ユーザーを編集"
+
+#: /templates/Users/index.php:8
+#: /templates/Users/view.php:14
+msgid "New User"
+msgstr "新規ユーザー"
+
+#: /templates/Users/index.php:9
+msgid "Users"
+msgstr "ユーザー一覧"
+
+#: /templates/Users/index.php:27
+#: /vendor/cakephp/cakephp/src/View/Helper/PaginatorHelper.php:1266
+msgid "View"
+msgstr "詳細"
+
+#: /templates/Users/index.php:28
+msgid "Edit"
+msgstr "編集"
+
+#: /templates/Users/view.php:12
+msgid "Delete User"
+msgstr "削除"
+
+#: /templates/Users/view.php:35
+msgid "Name"
+msgstr "名前"
+
+#: /templates/Users/view.php:41
+msgid "Password"
+msgstr "パスワード"
+
+#: /templates/Users/view.php:47
+msgid "Api Key"
+msgstr "apiキー"
+
+#: /templates/layout/error.php:40
+msgid "Back"
+msgstr "戻る"
+
+#: /vendor/wyrihaximus/twig-view/src/Shell/CompileShell.php:107
+msgid "Searches and precompiles all twig templates it finds."
+msgstr ""
+
+#: /vendor/wyrihaximus/twig-view/src/Shell/CompileShell.php:113
+msgid "Searches and precompiles all twig templates for a specific plugin."
+msgstr ""
+
+#: /vendor/wyrihaximus/twig-view/src/Shell/CompileShell.php:119
+msgid "Precompile a specific file."
+msgstr ""
+
+#: /vendor/wyrihaximus/twig-view/src/Shell/CompileShell.php:121
+msgid "TwigView templates precompiler"
+msgstr ""
+

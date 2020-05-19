@@ -19,7 +19,7 @@
                 <?php
                     echo $this->Form->control('name');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('api_key');
+                    echo $this->Form->control('line_user_id');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

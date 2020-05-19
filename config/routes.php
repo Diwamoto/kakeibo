@@ -67,9 +67,14 @@ $routes->scope('/', function (RouteBuilder $builder) {
     /*
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    //$builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $builder->connect('/users/:action/*', ['controller' => 'Users']);
-    $builder->connect('/kakeibo/*', ['controller' => 'Kakeibo', 'action' => 'index']);
+    //$builder->connect('/deposit/:action/*', ['controller' => 'LogDeposit']);
+    $builder->connect('/deposit/*', ['controller' => 'LogDeposits', 'action' => 'index']);
+    //$builder->connect('/withdraw/:action/*', ['controller' => 'LogWithdraw']);
+    $builder->connect('/withdraw/*', ['controller' => 'LogWithdraws', 'action' => 'index']);
+    $builder->connect('/kakeibo/withdraw/*', ['controller' => 'Kakeibo', 'action' => 'withdraw']);
+    $builder->connect('/kakeibo/deposit/*', ['controller' => 'Kakeibo', 'action' => 'deposit']);
     /*
      * Connect catchall routes for all controllers.
      *

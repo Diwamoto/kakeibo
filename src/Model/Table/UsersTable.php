@@ -52,7 +52,16 @@ class UsersTable extends Table
         $this->hasMany('Accounts', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('CardCredits', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('CardDebits', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('LogDeposits', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('LogTmps', [
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('LogWithdraws', [
@@ -71,6 +80,15 @@ class UsersTable extends Table
         $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
+            
+        $validator
+            ->scalar('line_user_id')
+            ->allowEmptyString('line_user_id', null, 'create');
+
+        $validator
+            ->scalar('name')
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
 
         $validator
             ->scalar('password')
@@ -90,4 +108,5 @@ class UsersTable extends Table
 
         return $validator;
     }
+
 }

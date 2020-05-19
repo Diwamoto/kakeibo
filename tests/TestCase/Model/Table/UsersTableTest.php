@@ -28,7 +28,7 @@ class UsersTableTest extends TestCase
         'app.Users',
         'app.Accounts',
         'app.LogDeposits',
-        'app.LogWithdrows',
+        'app.LogWithdraws',
     ];
 
     /**

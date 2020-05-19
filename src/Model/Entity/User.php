@@ -4,12 +4,15 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 
 /**
  * User Entity
  *
+ 
  * @property int $id
  * @property string $line_user_id
+ * @property string $name
  * @property string $password
  * @property string|null $token
  * @property int|null $authority
@@ -34,6 +37,7 @@ class User extends Entity
      */
     protected $_accessible = [
         'line_user_id' => true,
+        'name' => true,
         'password' => true,
         'token' => true,
         'authority' => true,
@@ -54,4 +58,11 @@ class User extends Entity
         'password',
         'token',
     ];
+    
+    protected function _setPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+    }
 }
