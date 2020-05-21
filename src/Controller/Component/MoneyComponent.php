@@ -46,9 +46,6 @@ class MoneyComponent extends Component
             $numbers = str_split($money);
             $length = count($numbers);
             for($i = $length; $i > $length - 4; $i--){
-                if(){
-                    
-                }
             }
 
         }

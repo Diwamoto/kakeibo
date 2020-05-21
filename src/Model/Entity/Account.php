@@ -32,7 +32,6 @@ class Account extends Entity
      * @var array
      */
     protected $_accessible = [
-        'account_type' => true,
         'name' => true,
         'user_id' => true,
         'amount' => true,

@@ -74,10 +74,6 @@ class AccountsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->integer('account_type')
-            ->allowEmptyString('account_type');
-
-        $validator
             ->scalar('name')
             ->allowEmptyString('name');
 

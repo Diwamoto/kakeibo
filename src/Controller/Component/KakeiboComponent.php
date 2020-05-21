@@ -31,17 +31,27 @@ class KakeiboComponent extends Component
         $this->controller = $this->_registry->getController();
         
     }
+    
+    public function flip($array){
+        if(empty($array)){
+            return $array;
+        }else{
+            foreach($array as $key => $val){
+                $array[$val] = $key;
+                unset($array[$key]);
+            }
+        }
+        return $array;
+    }
 
     public function buildWithdraw($tmpData, $message, $event, $bot){
         
         $this->controller->loadModel('MstWithdraws');
         $this->controller->loadModel('MstPaymentMethods');
-        $this->controller->loadModel('MstAccountTypes');
         $this->controller->loadModel('LogTmps');
 
-        $withdrawConfig = array_values($this->controller->MstWithdraws->find('list')->toArray());
-        $paymentMethods = array_values($this->controller->MstPaymentMethods->find('list')->toArray());
-        $accountTypes = array_values($this->controller->MstAccountTypes->find('list')->toArray());
+        $withdrawConfig = $this->controller->MstWithdraws->find('list')->toArray();
+        $paymentMethods = $this->controller->MstPaymentMethods->find('list')->toArray();
         $SendMessage = new MultiMessageBuilder();
         $builder = json_decode($tmpData->value, true);
         //ビルド完了フラグの初期化、ビルド終了時に有効化
@@ -72,7 +82,7 @@ class KakeiboComponent extends Component
                     break;
                 //出金のカテゴリの登録
                 case 'withdraw_id':
-                    $wdConfig = array_flip($withdrawConfig);
+                    $wdConfig = $this->flip($withdrawConfig);
                     switch($message){
                         case "食費":
                         case "日用品代":
@@ -98,6 +108,7 @@ class KakeiboComponent extends Component
                             $SendMessage->add(new TextMessageBuilder("どの口座からつかった？(" . implode(',', $accountNames) . ")"));
                             $bot->replyMessage($event->getReplyToken(), $SendMessage);
                             $builder[$target] = $wdConfig[$message];
+                            $this->log(var_export($wdConfig, true));
                             break;
                         default:
                             $SendMessage->add(new TextMessageBuilder("何に使った？(" . implode(',', $withdrawConfig) . ")"));
@@ -149,24 +160,25 @@ class KakeiboComponent extends Component
                     }
                     break;
                 case 'payment_method_id':
-                    $methods = array_flip($paymentMethods);
-                    $acTypes = array_flip($accountTypes);
+                    $methods = $this->flip($paymentMethods);
+                    $this->log(var_export($methods, true));
                     $this->controller->loadModel('Accounts');
                     $accountModel = $this->controller->Accounts->find('all');
                     //支払方法を特定、その後該当する支払方法の場合口座情報を特定
                     switch($message){
                         case '現金':
                             $builder[$target] = $methods['現金'];
+                            $builder['build_flg'] = true;
                             break;
                         case 'クレジットカード':
                         case 'クレカ':
                         case 'クレジット':
                             $builder[$target] = $methods['クレジットカード'];
+                            $builder['build_flg'] = true;
                             break;
                         case 'デビットカード':
                         case 'デビット':
                             $builder[$target] = $methods['デビットカード'];
-                            //ビルド完了フラグ
                             $builder['build_flg'] = true;
                             break;
                         default:
@@ -179,6 +191,7 @@ class KakeiboComponent extends Component
                     break;
                 default:
                     $SendMessage->add(new TextMessageBuilder("内部エラーが発生しました。管理者に連絡してください。"));
+                    $SendMessage->add(new TextMessageBuilder("該当データの削除を行いました。もう一度最初からやり直してください。"));
                     $bot->replyMessage($event->getReplyToken(), $SendMessage);
                     $SendMessage->add(new TextMessageBuilder("なんかおかしいぞ確認しろや"));
                     $bot->pushMessage('U00c4a2b7f6578ff5a99d96a2d4e6122b', $SendMessage);
@@ -207,10 +220,9 @@ class KakeiboComponent extends Component
 
     public function buildDeposit($tmpData, $message, $event, $bot){
         $this->controller->loadModel('MstDeposits');
-        $this->controller->loadModel('MstAccountTypes');
         $this->controller->loadModel('LogTmps');
 
-        $depositConfig = array_values($this->controller->MstDeposits->find('list')->toArray());
+        $depositConfig = $this->controller->MstDeposits->find('list')->toArray();
         $SendMessage = new MultiMessageBuilder();
         $builder = json_decode($tmpData->value, true);
         //ビルド完了フラグの初期化、ビルド終了時に有効化
@@ -285,11 +297,11 @@ class KakeiboComponent extends Component
                         foreach($accounts as $account){
                             $accountNames[] = $account->name;
                         }
-                        $SendMessage->add(new TextMessageBuilder("どの口座からつかった？(" . implode(',', $accountNames) . ")"));
+                        $SendMessage->add(new TextMessageBuilder("どの口座に入れた？(" . implode(',', $accountNames) . ")"));
                     }
                     break;
                 case 'deposit_id':
-                    $dpConfig = array_flip($depositConfig);
+                    $dpConfig = $this->flip($depositConfig);
                     switch($message){
                         case "給料":
                         case "特別収入":
@@ -480,7 +492,7 @@ class KakeiboComponent extends Component
         $this->controller->loadModel('LogWithdraws');
         $this->controller->loadModel('Accounts');
         $this->controller->loadModel('MstPaymentMethods');
-        $paymentMethods = array_flip(array_values($this->controller->MstPaymentMethods->find('list')->toArray()));
+        $paymentMethods = $this->flip($this->controller->MstPaymentMethods->find('list')->toArray());
 
         //クレカ払い以外なら該当口座から額を引く
         if($withdrawData['payment_method_id'] !== $paymentMethods['クレジットカード']){
@@ -519,9 +531,9 @@ class KakeiboComponent extends Component
         $this->controller->loadModel('MstWithdraws');
         $this->controller->loadModel('MstPaymentMethods');
         
-        $withdrawConfig = array_flip(array_values($this->controller->MstWithdraws->find('list')->toArray()));
-        $paymentMethods = array_flip(array_values($this->controller->MstPaymentMethods->find('list')->toArray()));
-        $depositConfig = array_flip(array_values($this->controller->MstDeposits->find('list')->toArray()));
+        $withdrawConfig = $this->flip($this->controller->MstWithdraws->find('list')->toArray());
+        $paymentMethods = $this->flip($this->controller->MstPaymentMethods->find('list')->toArray());
+        $depositConfig = $this->flip($this->controller->MstDeposits->find('list')->toArray());
         $this->withdraw([
             'user_id' => $transferData['user_id'],
             'place' => '銀行',

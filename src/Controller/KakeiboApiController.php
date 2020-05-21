@@ -79,7 +79,7 @@ class KakeiboApiController extends AppController
                     }
                 }else{
                     switch($message){
-                        case "o":
+                        case "あ":
                         case "支出":
                         case "支出を記録する":
                             $SendMessage = new MultiMessageBuilder();
@@ -102,7 +102,7 @@ class KakeiboApiController extends AppController
                             ]);
                             $this->LogTmps->save($entity);
                             break;
-                        case "i":
+                        case "ら":
                         case "収入":
                         case "収入を記録する":
                             $SendMessage = new MultiMessageBuilder();
@@ -123,7 +123,7 @@ class KakeiboApiController extends AppController
                             ]);
                             $this->LogTmps->save($entity);
                             break;
-                        case 'd':
+                        case 'で':
                         case 'データの削除':
                             $SendMessage = new MultiMessageBuilder();
                             $SendMessage->add(new TextMessageBuilder("どちらのデータですか？（支出、収入、振替）"));
