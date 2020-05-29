@@ -27,11 +27,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <?= $this->Html->css('milligram.min.css') ?>
-    <?= $this->Html->css('cake.css') ?>
-    <?= $this->Html->css('style.css') ?>
-
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -44,5 +40,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </main>
     <?php echo $this->Html->script('https://code.jquery.com/jquery-3.5.1.min.js')?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <?= $this->Html->script('init') ?>
 </body>
 </html>

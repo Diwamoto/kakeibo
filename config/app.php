@@ -77,6 +77,7 @@ return [
      */
     'Security' => [
         'salt' => env('SECURITY_SALT'),
+        'pepper' => env('SECURITY_PEPPER')
     ],
 
     /*
@@ -397,5 +398,6 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+        'timeout' => 4320
     ],
 ];

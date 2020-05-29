@@ -88,7 +88,7 @@ class LogWithdrawsTable extends Table
 
         $validator
             ->requirePresence('fix_flg', 'create')
-            ->notEmptyString('fix_flg');
+            ->allowEmptyString('amount');
 
         $validator
             ->scalar('comment')

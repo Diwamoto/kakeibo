@@ -39,7 +39,6 @@ class User extends Entity
         'line_user_id' => true,
         'name' => true,
         'password' => true,
-        'token' => true,
         'authority' => true,
         'status' => true,
         'created' => true,
@@ -56,7 +55,6 @@ class User extends Entity
      */
     protected $_hidden = [
         'password',
-        'token',
     ];
     
     protected function _setPassword(string $password) : ?string

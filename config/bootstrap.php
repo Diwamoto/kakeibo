@@ -192,9 +192,21 @@ Configure::write('line_settings', [
     'apiEndpointBase' => env('LINEBOT_API_ENDPOINT_BASE'),
 ]); 
 Configure::write('log_types', [
-    'withdraw' => 1,
-    'deposit' => 2,
-    'transfer' => 3
+    'withdraw' => [
+        'id' => 1,
+        'ja' => '出金'],
+    'deposit' => [
+        'id' => 2,
+        'ja' => '入金'],
+    'transfer' => [
+        'id' => 3,
+        'ja' => '口座振替'],
+    'check_accounts' => [
+        'id' => 4,
+        'ja' => '残高確認'],
+    'delete_log' => [
+        'id' => 5,
+        'ja' => 'データの削除']
 ]);
 Configure::write('card_types', [
     'credit' => 1,
@@ -235,4 +247,4 @@ Configure::write('card_types', [
 //Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
-//Inflector::rules('transliteration', ['/å/' => 'aa']);
+//Inflector::rules('transliteration', ['/Ã¥/' => 'aa']);

@@ -44,7 +44,7 @@ class AccountsTable extends Table
         parent::initialize($config);
 
         $this->setTable('accounts');
-        $this->setDisplayField('name');
+        $this->setDisplayField(['name','amount']);
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

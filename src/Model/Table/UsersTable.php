@@ -96,10 +96,6 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         $validator
-            ->scalar('token')
-            ->allowEmptyString('token');
-
-        $validator
             ->integer('authority')
             ->allowEmptyString('authority');
 
