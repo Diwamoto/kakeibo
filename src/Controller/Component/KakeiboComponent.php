@@ -286,7 +286,7 @@ class KakeiboComponent extends Component
             unset($builder['confirm_flg'], $builder['build_flg']);
             if($this->withdraw($builder)){
                 $SendMessage = new MultiMessageBuilder();
-                $SendMessage->add(new TextMessageBuilder("登録しました！"));
+                $SendMessage->add(new TextMessageBuilder("登録しました！💖"));
                 $bot->replyMessage($event->getReplyToken(), $SendMessage);
                 $this->controller->LogTmps->delete($tmpData);
             }
@@ -480,7 +480,7 @@ class KakeiboComponent extends Component
             unset($builder['confirm_flg'], $builder['confirm_flg']);
             if($this->deposit($builder)){
                 $SendMessage = new MultiMessageBuilder();
-                $SendMessage->add(new TextMessageBuilder("登録しました！"));
+                $SendMessage->add(new TextMessageBuilder("登録しました！💖"));
                 $bot->replyMessage($event->getReplyToken(), $SendMessage);
                 $this->controller->LogTmps->delete($tmpData);
             }
@@ -709,13 +709,14 @@ class KakeiboComponent extends Component
             'Accounts.name' => $message
         ])->first();
         if($account){
-            if($account->name == "生活"){
-                $until15 = (int) (strtotime(date('Y-m-15', strtotime('+1 month'))) - time()) / 86400;
-                $moneyPerDay = (int) ($account->amount / $until15);
-            }
             $SendMessage = new MultiMessageBuilder();
             $SendMessage->add(new TextMessageBuilder($message . "の口座残高は" . $account->amount . "円です。"));
-            $SendMessage->add(new TextMessageBuilder('給料日まで一日当たり' . $moneyPerDay . '円です。'));
+            if($account->name == "生活"){
+                $until15 = (int) (strtotime(date('Y-m-15', strtotime('+1 month'))) - time()) / 86400;
+                $moneyPerDay = (int) (($account->amount - 20000) / $until15);
+                $SendMessage->add(new TextMessageBuilder("生活費から電気等の2万円を引いた状態で、\n給料日まで一日当たり" . $moneyPerDay . '円です。'));
+                $SendMessage->add(new TextMessageBuilder('給料日まで後' . (int) $until15 . '日です。頑張りましょう！🤗'));
+            }
             $bot->replyMessage($event->getReplyToken(), $SendMessage);
             $this->controller->LogTmps->delete($tmpData);
         }else{

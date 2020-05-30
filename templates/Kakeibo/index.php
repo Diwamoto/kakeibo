@@ -36,10 +36,10 @@ foreach($terms as $term){
     <h4 class="center-align red-text">今月の収益: -<?=str_replace('-', '', $amount)?></h4>
 <?php endif;?>
 <div class="row">
-    <h4 class="col s3">取引日</h4>
-    <h4 class="col s2">金額</h4>
-    <h4 class="col s2">場所</h4>
-    <h4 class="col s5">種類</h4>
+    <h5 class="col s3">取引日</h5>
+    <h5 class="col s3">金額</h5>
+    <h5 class="col s3">場所</h5>
+    <h5 class="col s3">種類</h5>
 </div>
 <?php foreach($data as $obj):?>
 <?php 
@@ -58,9 +58,9 @@ foreach($terms as $term){
 <div class="divider"></div>
 <div class="row">
     <div class="col s3 flow-text"><?= $obj->created?></div>
-    <div class="col s2 flow-text"><span class="<?=$class?>-text"><?= $modifer . $obj->amount?></span></div>
-    <div class="col s2 flow-text"><?= $obj->place?></div>
-    <div class="col s5 flow-text"><?= $summary?></div>
+    <div class="col s3 flow-text"><span class="<?=$class?>-text"><?= $modifer . $obj->amount?></span></div>
+    <div class="col s3 flow-text"><?= $obj->place?></div>
+    <div class="col s3 flow-text"><?= $summary?></div>
 </div>
 <?php endforeach;?>
 <?php else:?>

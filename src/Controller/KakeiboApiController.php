@@ -186,7 +186,12 @@ class KakeiboApiController extends AppController
                             $Bot->replyMessage($event->getReplyToken(), $SendMessage);
                             $entity = $this->LogTmps->newEntity([
                                 'user_id' => $user->id,
-                                'value' => json_encode([]),
+                                'value' => json_encode([
+                                    'user_id' => $user->id,
+                                    'amount' => null,
+                                    'before_id' => null,
+                                    'after_id' => null
+                                ]),
                                 'type' => $LogType['transfer']['id'],
                                 'expire_date' => date("Y-m-d H:i:s",strtotime("+3 minute")),
                             ]);

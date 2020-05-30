@@ -54,7 +54,7 @@ class KakeiboController extends AppController
                     'year' => $year,
                     'month' => sprintf('%02d', $month)
                 ];
-                if(date($year . '-' . $month . '-d') == date("Y-m-d")){
+                if(date($year . '-' . sprintf('%02d', $month) . '-d') == date("Y-m-d")){
                     $nowterm = $id;
                 }
                 $id++;
@@ -71,7 +71,7 @@ class KakeiboController extends AppController
                 $token = $query['token'];
                 $tokenEntity = $this->UserTokens->find('all')->where([
                     'UserTokens.token' => $token,
-                    'USerTokens.token_limit > ' => date("Y-m-d H:i:s")
+                    'UserTokens.token_limit > ' => date("Y-m-d H:i:s")
                 ])->first();
                 if($tokenEntity){
                     $user = $this->Users->get($tokenEntity->user_id);
@@ -88,7 +88,7 @@ class KakeiboController extends AppController
                 $token = $request['token'];
                 $tokenEntity = $this->UserTokens->find('all')->where([
                     'UserTokens.token' => $token,
-                    'USerTokens.token_limit > ' => date("Y-m-d H:i:s")
+                    'UserTokens.token_limit > ' => date("Y-m-d H:i:s")
                 ])->first();
                 if($tokenEntity){
                     $user = $this->Users->get($tokenEntity->user_id);
@@ -180,7 +180,7 @@ class KakeiboController extends AppController
             $this->set(compact('token'));
         }
         if(empty($request)){
-            $request = $this->request->withParsedBody([
+            $this->request = $this->request->withParsedBody([
                 'terms' => $nowterm
             ]);
         }
